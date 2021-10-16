@@ -3,9 +3,12 @@ import Img from "next/image";
 import Logo from "../public/Logo.png";
 import Typewriter from "typewriter-effect";
 import { Button, Icon } from "@vechaiui/react";
+import { useRouter } from "next/router";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 
 function Hero() {
+  const router = useRouter();
+
   return (
     <section className="text-gray-400 bg-gray-900 body-font">
       <div className="container mx-auto flex flex-col px-5 py-24 justify-center items-center">
@@ -43,7 +46,16 @@ function Hero() {
             mistakes but I'm always ready to learn!
           </p>
           <div className="flex text-gray-300">
-            <Button variant="solid" color="primary" size="xl" className="mr-3">
+            <Button
+              variant="solid"
+              color="primary"
+              size="xl"
+              className="mr-3"
+              onClick={(e) => {
+                e.preventDefault();
+                router.push("/Contact");
+              }}
+            >
               Contact
             </Button>
             <Button
