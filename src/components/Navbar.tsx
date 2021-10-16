@@ -1,5 +1,8 @@
+import Img from "next/image";
+import Logo from "../public/Logo.png";
 import React from "react";
-import { Button, Icon, cx } from "@vechaiui/react";
+import { Button as IconButton, Icon, cx } from "@vechaiui/react";
+import router, { useRouter } from "next/router";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import {
   AiOutlineHome,
@@ -14,62 +17,67 @@ import { ImStack } from "react-icons/im";
 import { FaStackOverflow } from "react-icons/fa";
 
 function Navbar() {
+  const Router = useRouter();
+
+  const pages = [
+    {
+      id: 1,
+      name: "home",
+      href: "/",
+      icon: AiOutlineHome,
+    },
+    {
+      id: 2,
+      name: "Contact",
+      href: "/Contact",
+      icon: AiOutlinePhone,
+    },
+    {
+      id: 3,
+      name: "Projects",
+      href: "/Projects",
+      icon: AiOutlineProject,
+    },
+    {
+      id: 4,
+      name: "Technologies",
+      href: "/Technologies",
+      icon: ImStack,
+    },
+  ];
+
+  const LinkToPage = (e, href) => {
+    e.preventDefault();
+    router.push(href);
+  };
+
+  const renderNavButtons = pages.map((page) => {
+    return (
+      <li key={page.id}>
+        <IconButton
+          variant="ghost"
+          color="secondary"
+          leftIcon={<Icon as={page.icon} label={page.name} className="mr-1" />}
+          onClick={(e) => LinkToPage(e, page.href)}
+        >
+          {page.name}
+        </IconButton>
+      </li>
+    );
+  });
+
   return (
     <header className="text-gray-400 bg-gray-900 body-font">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <a className="flex title-font font-medium items-center text-white mb-4 md:mb-0">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
-            viewBox="0 0 24 24"
-          >
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-          </svg>
+          <Img src={Logo} alt="Logo" height="64" width="64" />
           <span className="ml-3 text-xl underline">Game Glide</span>
         </a>
         <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
-          <Button
-            variant="ghost"
-            color="secondary"
-            leftIcon={<Icon as={AiOutlineHome} label="home" className="mr-1" />}
-          >
-            Home
-          </Button>
-          <Button
-            variant="ghost"
-            color="secondary"
-            leftIcon={
-              <Icon as={AiOutlinePhone} label="contact" className="mr-1" />
-            }
-          >
-            Contact
-          </Button>
-          <Button
-            variant="ghost"
-            color="secondary"
-            leftIcon={
-              <Icon as={AiOutlineProject} label="projects" className="mr-1" />
-            }
-          >
-            Projects
-          </Button>
-          <Button
-            variant="ghost"
-            color="secondary"
-            leftIcon={
-              <Icon as={ImStack} label="technologies" className="mr-1" />
-            }
-          >
-            Technologies
-          </Button>
+          <ul className="flex flex-row">{renderNavButtons}</ul>
           <Tooltip.Root delayDuration={0}>
             <Tooltip.Trigger>
-              <Button
+              <IconButton
                 variant="ghost"
                 color="secondary"
                 leftIcon={
@@ -78,7 +86,7 @@ function Navbar() {
                 disabled
               >
                 Blogs
-              </Button>
+              </IconButton>
             </Tooltip.Trigger>
             <Tooltip.Content
               sideOffset={5}
@@ -92,34 +100,22 @@ function Navbar() {
             </Tooltip.Content>
           </Tooltip.Root>
         </nav>
-        <Button
-          variant="light"
-          color="primary"
-          size="md"
-          className="mr-4"
-          leftIcon={<Icon as={AiOutlineTwitter} label="twitter" />}
-        ></Button>
-        <Button
-          variant="light"
-          color="primary"
-          size="md"
-          className="mr-4"
-          leftIcon={<Icon as={AiOutlineGithub} label="github" />}
-        ></Button>
-        <Button
-          variant="light"
-          color="primary"
-          size="md"
-          className="mr-4"
-          leftIcon={<Icon as={FaStackOverflow} label="stackOverflow" />}
-        ></Button>
-        <Button
-          variant="light"
-          color="primary"
-          size="md"
-          className="mr-4"
-          leftIcon={<Icon as={AiOutlineYoutube} label="youtube" />}
-        ></Button>
+        <IconButton variant="light" color="primary" size="md" className="mr-4">
+          <Icon as={AiOutlineTwitter} label="twitter" className="w-4 h-4" />
+        </IconButton>
+        <IconButton variant="light" color="primary" size="md" className="mr-4">
+          <Icon as={AiOutlineGithub} label="github" className="w-4 h-4" />
+        </IconButton>
+        <IconButton variant="light" color="primary" size="md" className="mr-4">
+          <Icon
+            as={FaStackOverflow}
+            label="stackOverflow"
+            className="w-4 h-4"
+          />
+        </IconButton>
+        <IconButton variant="light" color="primary" size="md" className="mr-4">
+          <Icon as={AiOutlineYoutube} label="youtube" className="w-4 h-4" />
+        </IconButton>
       </div>
     </header>
   );
