@@ -1,6 +1,6 @@
 import React from "react";
 import Img from "next/image";
-import Logo from "../public/Logo.png";
+import Logo from "../public/Logo.svg";
 import Typewriter from "typewriter-effect";
 import { Button, Icon } from "@vechaiui/react";
 import { useRouter } from "next/router";
@@ -10,7 +10,7 @@ function Hero() {
   const router = useRouter();
 
   return (
-    <section className="text-gray-400 bg-gray-900 body-font">
+    <section className="dark text-gray-400 bg-gray-900 body-font">
       <div className="container mx-auto flex flex-col px-5 py-24 justify-center items-center">
         <Img src={Logo} alt="Logo" height="128" width="128" className="mb-5" />
         <div className="w-full md:w-2/3 flex flex-col mb-16 items-center text-center mt-10">

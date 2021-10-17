@@ -1,8 +1,8 @@
 import Img from "next/image";
-import Logo from "../public/Logo.png";
+import Logo from "../public/Logo.svg";
 import React from "react";
 import { Button as IconButton, Icon, cx } from "@vechaiui/react";
-import router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import {
   AiOutlineHome,
@@ -48,7 +48,7 @@ function Navbar() {
 
   const LinkToPage = (e, href) => {
     e.preventDefault();
-    router.push(href);
+    Router.push(href);
   };
 
   const renderNavButtons = pages.map((page) => {
@@ -100,20 +100,58 @@ function Navbar() {
             </Tooltip.Content>
           </Tooltip.Root>
         </nav>
-        <IconButton variant="light" color="primary" size="md" className="mr-4">
+        <IconButton
+          variant="light"
+          color="primary"
+          size="md"
+          className="mr-4"
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.href = "https://twitter.com/GlideGame";
+          }}
+        >
           <Icon as={AiOutlineTwitter} label="twitter" className="w-4 h-4" />
         </IconButton>
-        <IconButton variant="light" color="primary" size="md" className="mr-4">
+        <IconButton
+          variant="light"
+          color="primary"
+          size="md"
+          className="mr-4"
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.href = "https://github.com/YT-GameWorks";
+          }}
+        >
           <Icon as={AiOutlineGithub} label="github" className="w-4 h-4" />
         </IconButton>
-        <IconButton variant="light" color="primary" size="md" className="mr-4">
+        <IconButton
+          variant="light"
+          color="primary"
+          size="md"
+          className="mr-4"
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.href =
+              "https://stackoverflow.com/users/14283093/yt-gameworks";
+          }}
+        >
           <Icon
             as={FaStackOverflow}
             label="stackOverflow"
             className="w-4 h-4"
           />
         </IconButton>
-        <IconButton variant="light" color="primary" size="md" className="mr-4">
+        <IconButton
+          variant="light"
+          color="primary"
+          size="md"
+          className="mr-4"
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.href =
+              "https://www.youtube.com/channel/UCUpFpOBQnjKgQB3xEZ9xkww";
+          }}
+        >
           <Icon as={AiOutlineYoutube} label="youtube" className="w-4 h-4" />
         </IconButton>
       </div>
