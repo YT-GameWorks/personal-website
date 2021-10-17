@@ -200,14 +200,13 @@ function Technologies() {
   ];
 
   return (
-    <div>
+    <div className="overflow-scroll overflow-x-hidden overflow-y-hidden">
       <Navbar />
       <VechaiProvider theme={theme} colorScheme="cool">
         <div
-          className="dark container rounded-3xl w-full ml-10 overflow-scroll overflow-x-hidden"
+          className="dark container rounded-3xl w-full h-full ml-10"
           style={{
             backgroundColor: "rgba(11, 15, 26, 100)",
-            height: "27rem",
           }}
         >
           <div className="flex flex-wrap items-center justify-center text-center p-8 space-x-4">
