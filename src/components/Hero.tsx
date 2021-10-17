@@ -12,7 +12,7 @@ function Hero() {
   return (
     <section className="dark text-gray-400 bg-gray-900 body-font">
       <div className="container mx-auto flex flex-col px-5 py-24 justify-center items-center">
-        <Img src={Logo} alt="Logo" height="128" width="128" className="mb-5" />
+        <Img src={Logo} alt="Logo" height="152" width="152" className="mb-5" />
         <div className="w-full md:w-2/3 flex flex-col mb-16 items-center text-center mt-10">
           <h1 className="title-font sm:text-4xl text-3xl mb-10 font-medium text-white">
             <Typewriter

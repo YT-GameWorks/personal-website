@@ -33,6 +33,8 @@ function FormInput() {
                   id="name"
                   name="name"
                   placeholder="Game Glide"
+                  color="indigo"
+                  variant="solid"
                   className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 />
               </FormControl>
@@ -47,6 +49,8 @@ function FormInput() {
                   id="email"
                   name="email"
                   placeholder="jon@example.com"
+                  color="indigo"
+                  variant="solid"
                   className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 />
                 <FormHelperText>We'll never share your email.</FormHelperText>
@@ -61,6 +65,7 @@ function FormInput() {
                   id="message"
                   name="message"
                   placeholder="I wanted to see if you could build me a....."
+                  color="indigo"
                   className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 h-32 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                 ></Textarea>
               </FormControl>
