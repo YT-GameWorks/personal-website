@@ -1,15 +1,14 @@
 import axios from "axios";
 import { GithubProject } from "../interfaces/GithubProject";
 
-export function GetGithubProjects(username) {
-  axios
-    .get(`https://api.github.com/users/${username}/repos`)
-    .then(({ data }) => {
-      const GithubProjects: GithubProject[] | any = data;
+export async function GetGithubProjects(username) {
+  let GithubProjects: GithubProject[] | undefined = undefined;
 
-      return GithubProjects;
-    })
-    .catch((e) => {
-      console.log(`Failed to fetch github projects because: ${e}`);
-    });
+  const response = await fetch(
+    `https://api.github.com/users/${username}/repos`
+  );
+
+  GithubProjects = (await response.json()) as unknown as GithubProject[];
+
+  return GithubProjects;
 }
