@@ -1,3 +1,5 @@
+/* NOTE: this is really hard to do in function components, so we're using class components. */
+
 import React, { Component } from "react";
 import { VechaiProvider, Input, IconButton, Icon } from "@vechaiui/react";
 import { RiRefreshLine } from "react-icons/ri";
@@ -17,8 +19,6 @@ export default class Projects extends Component {
   async componentDidMount() {
     const GithubProjects = await GetGithubProjects("YT-GameWorks");
     this.setState({ projects: GithubProjects });
-
-    console.log(this.state);
   }
 
   render() {
@@ -51,11 +51,12 @@ export default class Projects extends Component {
                     color="primary"
                     size="xl"
                     className="ml-5 mt-3"
-                    onClick={() =>
-                      this.state.projects.forEach((project) => {
-                        console.log(`This is project: ${project.id}`);
-                      })
-                    }
+                    onClick={async () => {
+                      const GithubProjects = await GetGithubProjects(
+                        "YT-GameWorks"
+                      );
+                      this.setState({ projects: GithubProjects });
+                    }}
                   >
                     <Icon as={RiRefreshLine} label="BiRefresh" />
                   </IconButton>
