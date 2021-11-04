@@ -143,7 +143,7 @@ function ProjectCard({
               className="text-blue-400"
             />
             : {watchers} • {""}
-            {size} MB
+            {size} KB
           </h3>
         </div>
       </section>

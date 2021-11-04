@@ -88,6 +88,8 @@ export default class Projects extends Component {
                                 <div className="w-3/4 h-4 bg-gray-700 rounded animate-pulse" />
                                 <div className="w-full h-4 bg-gray-700 rounded animate-pulse" />
                                 <div className="w-5/6 h-4 bg-gray-700 rounded animate-pulse" />
+                                <div className="w-5/6 h-4 bg-gray-700 rounded animate-pulse" />
+                                <div className="w-5/6 h-4 bg-gray-700 rounded animate-pulse" />
                               </div>
                             </div>
                           </div>
