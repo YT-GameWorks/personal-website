@@ -64,6 +64,10 @@ function Hero() {
               rightIcon={
                 <Icon as={BsArrowRight} label="portfolio" className="ml-2" />
               }
+              onClick={(e) => {
+                e.preventDefault();
+                router.push("/Projects");
+              }}
             >
               Portfolio
             </Button>

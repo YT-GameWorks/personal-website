@@ -8,7 +8,10 @@ import { tabs } from "../other/Technologies";
 
 function Technologies() {
   return (
-    <div className="overflow-scroll overflow-x-hidden overflow-y-hidden">
+    <div
+      className="overflow-scroll overflow-x-hidden overflow-y-hidden"
+      style={{ backgroundColor: "#111827" }}
+    >
       <Navbar />
       <VechaiProvider theme={theme} colorScheme="cool">
         <div

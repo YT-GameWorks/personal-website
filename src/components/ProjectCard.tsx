@@ -1,54 +1,152 @@
 import React from "react";
-import { Owner } from "../interfaces/GithubProject";
+import { Tag, Icon, Button } from "@vechaiui/react";
+import { AiOutlineStar } from "react-icons/ai";
+import { GiBinoculars } from "react-icons/gi";
+import {
+  SiTypescript,
+  SiCsharp,
+  SiJava,
+  SiCss3,
+  SiJavascript,
+} from "react-icons/si";
+import { BsArchive, BsCardText } from "react-icons/bs";
+import { VscRepoForked } from "react-icons/vsc";
 
 function ProjectCard({
   name,
   isArchived,
   isForked,
   language,
-  owner,
   description,
   size,
   updatedAt,
   watchers,
+  stars,
   url,
 }: {
   name: string;
   isArchived: boolean;
   isForked: boolean;
   language: string;
-  owner: Owner;
   description: string;
   size: number;
   updatedAt: string;
   watchers: number;
+  stars: number;
   url: string;
 }) {
+  const d = new Date(updatedAt);
+
   return (
-    <div className="container px-5 py-24 mx-auto">
-      <h1 className="text-3xl font-medium title-font text-white mb-12 text-center">
-        {name}
-      </h1>
-      <div className="flex flex-wrap -m-4">
-        <div className="p-4 md:w-1/2 w-full">
-          <div className="h-full bg-gray-800 bg-opacity-40 p-8 rounded">
-            <p className="leading-relaxed mb-6">{description}</p>
-            <a className="inline-flex items-center">
-              <img
-                alt="testimonial"
-                src="https://dummyimage.com/106x106"
-                className="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center"
+    <div className="grid grid-cols-1 w-96 h-44 border-gray-800 border shadow-2xl rounded-lg -ml-5 my-5 overflow-hidden">
+      <section className="mt-2 ml-2">
+        <div className="flex flex-row">
+          <Icon
+            as={
+              language === "TypeScript"
+                ? SiTypescript
+                : language === "JavaScript"
+                ? SiJavascript
+                : language === "Java"
+                ? SiJava
+                : language === "Css"
+                ? SiCss3
+                : language === "C#"
+                ? SiCsharp
+                : BsCardText
+            }
+            label={language}
+            className={`mt-1 mr-1 ${
+              language === "TypeScript"
+                ? "text-blue-600"
+                : language === "JavaScript"
+                ? "text-yellow-300"
+                : language === "Java"
+                ? "text-red-500"
+                : language === "Css"
+                ? "text-blue-400"
+                : language === "C#"
+                ? "text-purple-600"
+                : "text-gray-600"
+            }`}
+          />
+          <h1 className="text-white title-font font-medium">{name}</h1>
+          {isArchived && isForked ? (
+            <div>
+              <Tag variant="light" color="orange" className="ml-3">
+                <Icon
+                  as={BsArchive}
+                  label="bs-archive"
+                  className="h-4 w-4 mr-1"
+                />
+                <Tag.Label>Archived</Tag.Label>
+              </Tag>
+              <Tag variant="light" color="primary" className="ml-3">
+                <Icon
+                  as={VscRepoForked}
+                  label="vsc-repo-forked"
+                  className="h-4 w-4 mr-1"
+                />
+                <Tag.Label>Forked</Tag.Label>
+              </Tag>
+            </div>
+          ) : isArchived || isForked ? (
+            <Tag
+              variant="light"
+              color={isArchived ? "orange" : "primary"}
+              className="ml-3"
+            >
+              <Icon
+                as={isArchived ? BsArchive : VscRepoForked}
+                label={isArchived ? "vs-archive" : "vsc-repo-forked"}
+                className="h-4 w-4 mr-1"
               />
-              <span className="flex-grow flex flex-col pl-4">
-                <span className="title-font font-medium text-white">
-                  {owner.login}
-                </span>
-                <span className="text-gray-500 text-sm">{language}</span>
-              </span>
-            </a>
-          </div>
+
+              <Tag.Label>{isArchived ? "Archived" : "Forked"}</Tag.Label>
+            </Tag>
+          ) : (
+            ""
+          )}
         </div>
-      </div>
+        <h3 className="leading-relaxed text-left">
+          Last Updated: {d.toDateString()}
+        </h3>
+      </section>
+      <section>
+        <p className="text-left text-muted text-sm ml-2 mt-2 mb-2">
+          {description ? description : <em>No Description provided</em>}
+        </p>
+      </section>
+      <section className="ml-2 mb-2 flex">
+        <Button
+          variant="light"
+          color="primary"
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.href = url;
+          }}
+          className="mr-2"
+        >
+          View Repository
+        </Button>
+        <div className="text-muted text-left">
+          <h3>
+            <Icon
+              as={AiOutlineStar}
+              label="ai-outline-star"
+              className="text-yellow-400"
+            />
+            : {stars} • {""}
+            <Icon
+              as={GiBinoculars}
+              label="gi-binoculars"
+              className="text-blue-400"
+            />
+            : {watchers} • {""}
+            {size} MB
+          </h3>
+        </div>
+      </section>
     </div>
   );
 }

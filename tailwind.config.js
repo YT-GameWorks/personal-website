@@ -1,4 +1,5 @@
-// tailwind.config.js
+const colors = require("tailwindcss/colors");
+
 module.exports = {
   mode: "jit",
   purge: [
@@ -8,10 +9,19 @@ module.exports = {
   ],
   darkMode: "class", // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        orange: colors.orange,
+      },
+    },
   },
   variants: {
     extend: {},
   },
-  plugins: [require("@tailwindcss/forms"), require("@vechaiui/core")],
+  plugins: [
+    require("@tailwindcss/forms"),
+    require("@vechaiui/core")({
+      colors: ["orange"],
+    }),
+  ],
 };
