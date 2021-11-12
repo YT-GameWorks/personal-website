@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Input,
   FormControl,
@@ -9,6 +9,8 @@ import {
 } from "@vechaiui/react";
 
 function FormInput() {
+  const [isSent, setIsSent] = useState<boolean>(false);
+
   return (
     <section className="dark text-gray-400 bg-gray-900 body-font relative">
       <div className="container px-5 py-24 mx-auto">
@@ -22,7 +24,11 @@ function FormInput() {
           </p>
         </div>
         <div className="lg:w-1/2 md:w-2/3 mx-auto">
-          <div className="flex flex-wrap -m-2">
+          <form
+            method="POST"
+            className="flex flex-wrap -m-2"
+            onSubmit={(e) => console.log("submitted!")}
+          >
             <div className="p-2 w-1/2">
               <FormControl className="relative">
                 <FormLabel className="leading-7 text-sm text-gray-400">
@@ -71,17 +77,30 @@ function FormInput() {
               </FormControl>
             </div>
             <div className="p-2 w-full">
-              <Button
-                className="flex mx-auto"
-                type="submit"
-                variant="solid"
-                color="primary"
-                size="lg"
-              >
-                Send
-              </Button>
+              {!isSent ? (
+                <Button
+                  className="flex mx-auto"
+                  type="submit"
+                  variant="solid"
+                  color="primary"
+                  size="lg"
+                  disabled
+                >
+                  Send
+                </Button>
+              ) : (
+                <Button
+                  className="flex mx-auto"
+                  type="submit"
+                  variant="solid"
+                  color="primary"
+                  size="lg"
+                >
+                  Send
+                </Button>
+              )}
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </section>

@@ -11,13 +11,17 @@ import { GetGithubProjects } from "../api/GithubProjects";
 import { GithubProject } from "../interfaces/GithubProject";
 import CardStyles from "../styles/Card.module.css";
 
-export default class Projects extends Component {
-  state: {
-    projects: GithubProject[];
-    isLoading: boolean;
-    skeletonCards: Array<number>;
-  } = {
-    projects: [],
+interface ProjectsProps {}
+
+interface ProjectsState {
+  Projects: GithubProject[] | null;
+  isLoading: boolean;
+  skeletonCards: Array<number>;
+}
+
+export default class Projects extends Component<ProjectsProps, ProjectsState> {
+  state = {
+    Projects: [],
     isLoading: true,
     skeletonCards: [
       1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
@@ -26,7 +30,7 @@ export default class Projects extends Component {
 
   async componentDidMount() {
     const GithubProjects = await GetGithubProjects("YT-GameWorks");
-    this.setState({ projects: GithubProjects, isLoading: false });
+    this.setState({ Projects: GithubProjects, isLoading: false });
   }
 
   render() {
@@ -65,7 +69,7 @@ export default class Projects extends Component {
                         "YT-GameWorks"
                       );
                       this.setState({
-                        projects: GithubProjects,
+                        Projects: GithubProjects,
                         isLoading: false,
                       });
                     }}
@@ -96,7 +100,7 @@ export default class Projects extends Component {
                         ))}
                       </div>
                     ) : (
-                      this.state.projects.map((project) => (
+                      this.state.Projects.map((project) => (
                         <li id={project.id.toString()}>
                           <ProjectCard
                             name={project.name}
