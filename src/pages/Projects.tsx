@@ -10,27 +10,41 @@ import ProjectCard from "../components/ProjectCard";
 import { GetGithubProjects } from "../api/GithubProjects";
 import { GithubProject } from "../interfaces/GithubProject";
 import CardStyles from "../styles/Card.module.css";
+import { closestMatch } from "closest-match";
 
 interface ProjectsProps {}
 
 interface ProjectsState {
   Projects: GithubProject[] | null;
+  search: string;
   isLoading: boolean;
   skeletonCards: Array<number>;
+  filteredNames: Array<string>;
+  projectNames: Array<string>;
+  filteredProjects: GithubProject[] | null;
 }
 
 export default class Projects extends Component<ProjectsProps, ProjectsState> {
   state = {
     Projects: [],
     isLoading: true,
+    search: "",
     skeletonCards: [
       1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
     ],
+    filteredNames: [],
+    projectNames: [],
+    filteredProjects: [],
   };
 
   async componentDidMount() {
-    const GithubProjects = await GetGithubProjects("YT-GameWorks");
+    const GithubProjects: GithubProject[] = await GetGithubProjects(
+      "YT-GameWorks"
+    );
     this.setState({ Projects: GithubProjects, isLoading: false });
+    this.state.Projects.forEach((project: GithubProject) => {
+      this.state.projectNames.push(project.name);
+    });
   }
 
   render() {
@@ -57,6 +71,21 @@ export default class Projects extends Component<ProjectsProps, ProjectsState> {
                     size="lg"
                     className="w-80 mt-4"
                     style={{ marginLeft: "30rem" }}
+                    onChange={(e) => {
+                      this.setState({ search: e.target.value });
+
+                      const FilteredNames: any = closestMatch(
+                        this.state.search,
+                        this.state.projectNames,
+                        true
+                      );
+
+                      this.setState({ filteredNames: FilteredNames });
+
+                      // TODO filter projects by filteredNames
+
+                      console.log(this.state);
+                    }}
                   />
                   <IconButton
                     variant="ghost"

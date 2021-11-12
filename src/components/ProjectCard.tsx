@@ -38,7 +38,7 @@ function ProjectCard({
   const d = new Date(updatedAt);
 
   return (
-    <div className="grid grid-cols-1 w-96 h-44 border-gray-800 border shadow-2xl rounded-lg -ml-5 my-5 overflow-hidden">
+    <div className="grid grid-cols-1 w-96 h-44 scale-100 border-gray-800 border shadow-lg rounded-lg -ml-5 my-5 overflow-hidden transition-all hover:shadow-2xl hover:scale-105">
       <section className="mt-2 ml-2">
         <div className="flex flex-row">
           <Icon
