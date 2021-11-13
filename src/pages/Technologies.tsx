@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { VechaiProvider, cx, Icon } from "@vechaiui/react";
 import * as Tabs from "@radix-ui/react-tabs";
 import { theme } from "../themes";
@@ -7,6 +7,10 @@ import Footer from "../components/Footer";
 import { tabs } from "../other/Technologies";
 
 function Technologies() {
+  useEffect(() => {
+    document.title = "Game Glide | Technologies";
+  });
+
   return (
     <div
       className="overflow-scroll overflow-x-hidden overflow-y-hidden"

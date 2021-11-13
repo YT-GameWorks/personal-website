@@ -34,10 +34,12 @@ export default class Projects extends Component<ProjectsProps, ProjectsState> {
     ],
     filteredNames: [],
     projectNames: [],
-    filteredProjects: [],
+    filteredProjects: null,
   };
 
   async componentDidMount() {
+    document.title = "Game Glide | Projects";
+
     const GithubProjects: GithubProject[] = await GetGithubProjects(
       "YT-GameWorks"
     );
@@ -72,19 +74,42 @@ export default class Projects extends Component<ProjectsProps, ProjectsState> {
                     className="w-80 mt-4"
                     style={{ marginLeft: "30rem" }}
                     onChange={(e) => {
-                      this.setState({ search: e.target.value });
+                      if (e.target.value === "") {
+                        this.setState({
+                          search: "",
+                          filteredNames: null,
+                          filteredProjects: null,
+                        });
+                      } else {
+                        this.setState({ search: e.target.value });
 
-                      const FilteredNames: any = closestMatch(
-                        this.state.search,
-                        this.state.projectNames,
-                        true
-                      );
+                        const FilteredNames: string[] = closestMatch(
+                          this.state.search,
+                          this.state.projectNames,
+                          true
+                        ) as string[];
 
-                      this.setState({ filteredNames: FilteredNames });
+                        this.setState({ filteredNames: FilteredNames });
 
-                      // TODO filter projects by filteredNames
+                        const FilteredProjects: GithubProject[] = [];
 
-                      console.log(this.state);
+                        this.state.Projects.forEach(
+                          (project: GithubProject) => {
+                            if (
+                              FilteredNames.some((el) => project.name === el)
+                            ) {
+                              FilteredProjects.push(project);
+                            } else {
+                              return;
+                            }
+                          }
+                        );
+
+                        this.setState({
+                          filteredProjects:
+                            FilteredProjects === [] ? null : FilteredProjects,
+                        });
+                      }
                     }}
                   />
                   <IconButton
@@ -128,6 +153,23 @@ export default class Projects extends Component<ProjectsProps, ProjectsState> {
                           </div>
                         ))}
                       </div>
+                    ) : this.state.filteredProjects != null ? (
+                      this.state.filteredProjects.map((project) => (
+                        <li id={project.id.toString()}>
+                          <ProjectCard
+                            name={project.name}
+                            isArchived={project.archived}
+                            isForked={project.fork}
+                            language={project.language}
+                            description={project.description}
+                            size={project.size}
+                            updatedAt={project.updated_at}
+                            watchers={project.watchers}
+                            stars={project.stargazers_count}
+                            url={project.html_url}
+                          />
+                        </li>
+                      ))
                     ) : (
                       this.state.Projects.map((project) => (
                         <li id={project.id.toString()}>
