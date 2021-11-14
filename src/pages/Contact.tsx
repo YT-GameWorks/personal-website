@@ -162,6 +162,10 @@ function Contact({ userID, templateID, serviceID }) {
                               console.log(error.text);
                             }
                           );
+
+                        setName(null);
+                        setEmailAddress(null);
+                        setMessage(null);
                       }}
                     >
                       Send
