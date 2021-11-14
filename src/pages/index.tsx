@@ -12,7 +12,9 @@ function Home() {
 
   return (
     <div>
-      <Navbar />
+      <div className="animate__backInDown">
+        <Navbar />
+      </div>
       <VechaiProvider theme={theme} colorScheme="cool">
         <Hero />
       </VechaiProvider>

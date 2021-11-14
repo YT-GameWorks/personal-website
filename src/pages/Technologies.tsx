@@ -4,7 +4,7 @@ import * as Tabs from "@radix-ui/react-tabs";
 import { theme } from "../themes";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { tabs } from "../other/Technologies";
+import { tabs } from "../other/TechnologiesContent";
 
 function Technologies() {
   useEffect(() => {
