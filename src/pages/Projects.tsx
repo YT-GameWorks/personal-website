@@ -11,6 +11,7 @@ import { GetGithubProjects } from "../api/GithubProjects";
 import { GithubProject } from "../interfaces/GithubProject";
 import CardStyles from "../styles/Card.module.css";
 import { closestMatch } from "closest-match";
+import "animate.css";
 
 interface ProjectsProps {}
 
@@ -54,18 +55,18 @@ export default class Projects extends Component<ProjectsProps, ProjectsState> {
       <div className="overflow-x-hidden">
         <Navbar />
         <VechaiProvider theme={theme} colorScheme="cool">
-          <section className="text-gray-400 bg-gray-900 body-font">
+          <section className="text-gray-400 body-font">
             <div className="container px-5 pb-24 mx-auto">
               <div className="flex flex-col text-center w-full">
-                <h1 className="text-2xl font-medium title-font mb-4 text-white tracking-widest">
+                <h1 className="text-2xl font-medium title-font mb-4 text-white tracking-widest animate__animated animate__fadeIn">
                   PROJECTS
                 </h1>
-                <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
+                <p className="lg:w-2/3 mx-auto leading-relaxed text-base animate__animated animate__fadeIn animate_delay-2s">
                   Here you can find latest github projects made by me, They
                   update as I create them so look out, there might be a new one
                   every now and then!
                 </p>
-                <div className="flex flex-row">
+                <div className="flex flex-row animate__animated animate__fadeIn animate_delay-3s">
                   <Input
                     placeholder="project name"
                     variant="solid"
@@ -172,7 +173,10 @@ export default class Projects extends Component<ProjectsProps, ProjectsState> {
                       ))
                     ) : (
                       this.state.Projects.map((project) => (
-                        <li id={project.id.toString()}>
+                        <li
+                          id={project.id.toString()}
+                          className="animate__animated animate__fadeIn animate_delay-4s"
+                        >
                           <ProjectCard
                             name={project.name}
                             isArchived={project.archived}

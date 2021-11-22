@@ -4,15 +4,17 @@ import { theme } from "../themes";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Footer from "../components/Footer";
+import "animate.css";
 
 function Home() {
   useEffect(() => {
     document.title = "Game Glide | Home";
   });
 
+  // FIXME Favicon not displaying (breaking page so temporarily removed)
   return (
     <div>
-      <div className="animate__backInDown">
+      <div>
         <Navbar />
       </div>
       <VechaiProvider theme={theme} colorScheme="cool">

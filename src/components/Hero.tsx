@@ -52,7 +52,7 @@ function Hero() {
             and discord bots. I'm generally pretty goofy and tend to make
             mistakes but I'm always ready to learn!
           </p>
-          <div className="flex text-gray-300 animate__animated animate__fadeIn animate__pulse animate__delay-4s">
+          <div className="flex text-gray-300 animate__animated animate__fadeIn animate__pulse animate__delay-4s animate__repeat-2">
             <Button
               variant="solid"
               color="primary"

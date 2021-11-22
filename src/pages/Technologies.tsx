@@ -12,14 +12,21 @@ function Technologies() {
   });
 
   return (
-    <div
-      className="overflow-scroll overflow-x-hidden overflow-y-hidden"
-      style={{ backgroundColor: "#111827" }}
-    >
+    <div className="overflow-scroll overflow-x-hidden overflow-y-hidden">
       <Navbar />
       <VechaiProvider theme={theme} colorScheme="cool">
+        <div className="body-font relative text-center w-full mb-10">
+          <h1 className="text-2xl font-medium title-font mb-4 text-white tracking-widest animate__animated animate__fadeIn">
+            TECHNOLOGIES
+          </h1>
+          <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-gray-500 animate__animated animate__fadeIn animate_delay-2s">
+            Here you can find all the technologies I know and the ones in which
+            I'm most experienced! Keep your eyes out! There might be a new one
+            every now and then!
+          </p>
+        </div>
         <div
-          className="dark container rounded-3xl w-full h-full ml-10"
+          className="dark container rounded-3xl w-full h-full ml-10 animate__animated animate__fadeIn animated_delay-2s"
           style={{
             backgroundColor: "rgba(11, 15, 26, 100)",
           }}
@@ -45,6 +52,7 @@ function Technologies() {
                       "text-neutral-900 bg-transparent border-b-2 border-transparent",
                       "hover:border-neutral-300",
                       "selected:border-primary-500",
+                      "animate__animated animate__fadeIn animated_delay-3s",
                       // dark
                       "dark:text-neutral-100",
                       "dark:hover:border-neutral-600",
@@ -64,7 +72,7 @@ function Technologies() {
                 <Tabs.Content
                   key={tab.value}
                   value={tab.value}
-                  className="p-4 flex-grow-1"
+                  className="p-4 flex-grow-1 animate__animated animate__fadeIn animated_delay-4s"
                 >
                   {tab.content}
                 </Tabs.Content>
