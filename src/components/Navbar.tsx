@@ -1,5 +1,4 @@
 import Img from "next/image";
-import Logo from "../public/Logo.svg";
 import React from "react";
 import { Button, Icon, cx, IconButton, Divider } from "@vechaiui/react";
 import { Menu, Transition } from "@headlessui/react";
@@ -96,7 +95,7 @@ function Navbar() {
     <header className='text-gray-400 bg-gray-900 body-font animate__animated animate__fadeInDownBig'>
       <div className='container flex flex-wrap p-5 flex-row items-start md:items-center'>
         <a className='flex title-font font-medium items-center text-white mb-4 sm:mb-0'>
-          <Img src={Logo} alt='Logo' height='64' width='64' />
+          <Img src='/static/Logo.svg' alt='Logo' height='64' width='64' />
           <span className='ml-3 text-xl underline'>Game Glide</span>
         </a>
         <div className='items-end ml-auto py-3 z-dropdown md:hidden'>
