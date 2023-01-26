@@ -94,7 +94,10 @@ function Navbar() {
   return (
     <header className='text-gray-400 bg-gray-900 body-font animate__animated animate__fadeInDownBig'>
       <div className='container flex flex-wrap p-5 flex-row items-start md:items-center'>
-        <a className='flex title-font font-medium items-center text-white mb-4 sm:mb-0'>
+        <a
+          className='flex title-font font-medium items-center text-white mb-4 sm:mb-0 cursor-pointer'
+          onClick={(e) => LinkToPage(e, "/")}
+        >
           <Img src='/static/Logo.svg' alt='Logo' height='64' width='64' />
           <span className='ml-3 text-xl underline'>Game Glide</span>
         </a>
@@ -127,61 +130,6 @@ function Navbar() {
               Coming Soon!
             </Tooltip.Content>
           </Tooltip.Root>
-          <div className='mr-auto invisible'>spacer</div>
-          <IconButton
-            variant='light'
-            color='primary'
-            size='md'
-            className='mr-4'
-            onClick={(e) => {
-              e.preventDefault();
-              window.location.href = "https://twitter.com/GlideGame";
-            }}
-          >
-            <Icon as={AiOutlineTwitter} label='twitter' className='w-4 h-4' />
-          </IconButton>
-          <IconButton
-            variant='light'
-            color='primary'
-            size='md'
-            className='mr-4'
-            onClick={(e) => {
-              e.preventDefault();
-              window.location.href = "https://github.com/YT-GameWorks";
-            }}
-          >
-            <Icon as={AiOutlineGithub} label='github' className='w-4 h-4' />
-          </IconButton>
-          <IconButton
-            variant='light'
-            color='primary'
-            size='md'
-            className='mr-4'
-            onClick={(e) => {
-              e.preventDefault();
-              window.location.href =
-                "https://stackoverflow.com/users/14283093/yt-gameworks";
-            }}
-          >
-            <Icon
-              as={FaStackOverflow}
-              label='stackOverflow'
-              className='w-4 h-4'
-            />
-          </IconButton>
-          <IconButton
-            variant='light'
-            color='primary'
-            size='md'
-            className=''
-            onClick={(e) => {
-              e.preventDefault();
-              window.location.href =
-                "https://www.youtube.com/channel/UCUpFpOBQnjKgQB3xEZ9xkww";
-            }}
-          >
-            <Icon as={AiOutlineYoutube} label='youtube' className='w-4 h-4' />
-          </IconButton>
         </nav>
       </div>
     </header>
