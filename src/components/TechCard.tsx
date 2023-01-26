@@ -13,18 +13,20 @@ function TechCard({
 }) {
   const renderTechCard = data.map((language) => {
     return (
-      <li key={language.id} className="flex flex-wrap -m-2">
-        <div className="h-full flex items-center border-gray-800 border p-4 rounded-lg mr-5 ml-5">
+      <li key={language.id} className='flex flex-wrap -m-2 mb-4 md:mb-0'>
+        <div className='h-full flex items-center border-gray-800 border p-4 rounded-lg mr-5 ml-5'>
           <img
-            alt="Language/Stack/Framework Image"
-            className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-            src="https://dummyimage.com/80x80"
+            alt='Language/Stack/Framework Image'
+            className='w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4'
+            src={language.image}
           />
-          <div className="flex-grow">
-            <h2 className="text-white title-font font-medium">
+          <div className='flex-grow'>
+            <h2 className='text-white title-font font-medium'>
               {language.name}
             </h2>
-            <p className="text-gray-600">{language.description}</p>
+            <p className='text-gray-600 text-left md:text-center'>
+              {language.description}
+            </p>
           </div>
         </div>
       </li>

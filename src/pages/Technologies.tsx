@@ -5,6 +5,7 @@ import { theme } from "../themes";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { tabs } from "../other/TechnologiesContent";
+import CardStyles from "../styles/Card.module.css";
 
 function Technologies() {
   useEffect(() => {
@@ -12,32 +13,32 @@ function Technologies() {
   });
 
   return (
-    <div className="overflow-scroll overflow-x-hidden overflow-y-hidden">
-      <Navbar />
-      <VechaiProvider theme={theme} colorScheme="cool">
-        <div className="body-font relative text-center w-full mb-10">
-          <h1 className="text-2xl font-medium title-font mb-4 text-white tracking-widest animate__animated animate__fadeIn">
+    <div className='overflow-scroll overflow-x-hidden overflow-y-hidden'>
+      <VechaiProvider theme={theme} colorScheme='cool'>
+        <Navbar />
+        <div className='body-font text-center w-full mb-10'>
+          <h1 className='text-2xl font-medium title-font mb-4 text-white tracking-widest '>
             TECHNOLOGIES
           </h1>
-          <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-gray-500 animate__animated animate__fadeIn animate_delay-2s">
+          <p className='lg:w-2/3 mx-auto leading-relaxed text-base text-gray-500'>
             Here you can find all the technologies I know and the ones in which
             I'm most experienced! Keep your eyes out! There might be a new one
             every now and then!
           </p>
         </div>
         <div
-          className="dark container rounded-3xl w-full h-full ml-10 animate__animated animate__fadeIn animated_delay-2s"
+          className='dark container rounded-3xl w-auto md:w-full h-full mx-2 md:m-auto animate__animated animate__fadeIn animated_delay-2s'
           style={{
             backgroundColor: "rgba(11, 15, 26, 100)",
           }}
         >
-          <div className="flex flex-wrap items-center justify-center text-center p-8 space-x-4">
+          <div className='flex flex-wrap items-center justify-center text-center p-8 space-x-4'>
             <Tabs.Root
-              className="flex flex-col items-center justify-center"
-              defaultValue="tab1"
+              className='flex flex-col items-center justify-center'
+              defaultValue='tab1'
             >
               <Tabs.List
-                aria-label="tabs example"
+                aria-label='tabs example'
                 className={cx(
                   "flex flex-row justify-start",
                   "border-b border-neutral-200 dark:border-neutral-700"
@@ -48,7 +49,7 @@ function Technologies() {
                     key={tab.value}
                     value={tab.value}
                     className={cx(
-                      "flex items-center justify-center px-3 py-2 -mb-px text-sm text-center whitespace-nowrap cursor-base focus:outline-none",
+                      "items-center justify-center px-3 py-2 -mb-px text-sm text-center whitespace-nowrap cursor-base focus:outline-none",
                       "text-neutral-900 bg-transparent border-b-2 border-transparent",
                       "hover:border-neutral-300",
                       "selected:border-primary-500",
@@ -62,7 +63,7 @@ function Technologies() {
                     <Icon
                       as={tab.icon}
                       label={tab.label}
-                      className="w-4 h-4 mr-2"
+                      className='w-4 h-4 mr-2'
                     />
                     <span>{tab.name}</span>
                   </Tabs.Trigger>
@@ -72,7 +73,7 @@ function Technologies() {
                 <Tabs.Content
                   key={tab.value}
                   value={tab.value}
-                  className="p-4 flex-grow-1 animate__animated animate__fadeIn animated_delay-4s"
+                  className={`sm:${CardStyles.cards} p-4 flex-grow-1 animate__animated animate__fadeIn animated_delay-4s'`}
                 >
                   {tab.content}
                 </Tabs.Content>
@@ -80,8 +81,10 @@ function Technologies() {
             </Tabs.Root>
           </div>
         </div>
+        <div className='mt-28'>
+          <Footer />
+        </div>
       </VechaiProvider>
-      <Footer />
     </div>
   );
 }

@@ -8,7 +8,7 @@ import { ImStack } from "react-icons/im";
 export const pages = [
   {
     id: 1,
-    name: "home",
+    name: "Home",
     href: "/",
     icon: AiOutlineHome,
   },

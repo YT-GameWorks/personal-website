@@ -52,28 +52,26 @@ export default class Projects extends Component<ProjectsProps, ProjectsState> {
 
   render() {
     return (
-      <div className="overflow-x-hidden">
-        <Navbar />
-        <VechaiProvider theme={theme} colorScheme="cool">
-          <section className="text-gray-400 body-font">
-            <div className="container px-5 pb-24 mx-auto">
-              <div className="flex flex-col text-center w-full">
-                <h1 className="text-2xl font-medium title-font mb-4 text-white tracking-widest animate__animated animate__fadeIn">
+      <div className='overflow-x-hidden'>
+        <VechaiProvider theme={theme} colorScheme='cool'>
+          <Navbar />
+          <section className='text-gray-400 body-font'>
+            <div className='container px-0 md:px-5 pb-24 md:mx-auto'>
+              <div className='flex flex-col text-center w-full'>
+                <h1 className='text-2xl font-medium title-font mb-4 text-white tracking-widest md:animate__animated md:animate__fadeIn'>
                   PROJECTS
                 </h1>
-                <p className="lg:w-2/3 mx-auto leading-relaxed text-base animate__animated animate__fadeIn animate_delay-2s">
-                  Here you can find latest github projects made by me, They
-                  update as I create them so look out, there might be a new one
-                  every now and then!
+                <p className='lg:w-2/3 mx-auto leading-relaxed text-base md:animate__animated md:animate__fadeIn md:animate_delay-2s'>
+                  Here you can find latest github projects made by me, there
+                  might be a new one every now and then!
                 </p>
-                <div className="flex flex-row animate__animated animate__fadeIn animate_delay-3s">
+                <div className='flex flex-row items-center animate__animated animate__fadeIn animate_delay-3s'>
                   <Input
-                    placeholder="project name"
-                    variant="solid"
-                    color="blue"
-                    size="lg"
-                    className="w-80 mt-4"
-                    style={{ marginLeft: "30rem" }}
+                    placeholder='Project Name'
+                    variant='solid'
+                    color='blue'
+                    size='lg'
+                    className='ml-auto w-60 md:w-80 mt-4'
                     onChange={(e) => {
                       if (e.target.value === "") {
                         this.setState({
@@ -114,10 +112,10 @@ export default class Projects extends Component<ProjectsProps, ProjectsState> {
                     }}
                   />
                   <IconButton
-                    variant="ghost"
-                    color="primary"
-                    size="xl"
-                    className="ml-5 mt-3"
+                    variant='ghost'
+                    color='primary'
+                    size='xl'
+                    className='mr-auto ml-5 mt-3'
                     onClick={async () => {
                       this.setState({ Projects: null, isLoading: true });
                       const GithubProjects = await GetGithubProjects(
@@ -129,26 +127,26 @@ export default class Projects extends Component<ProjectsProps, ProjectsState> {
                       });
                     }}
                   >
-                    <Icon as={RiRefreshLine} label="BiRefresh" />
+                    <Icon as={RiRefreshLine} label='BiRefresh' />
                   </IconButton>
                 </div>
-                <div className="ml-10">
+                <div className=' ml-8 mr-4 md:ml-10'>
                   <ul className={CardStyles.cards}>
                     {this.state.isLoading ? (
                       <div
-                        className="grid gap-8 items-start p-8 -ml-14"
+                        className='grid gap-8 items-start p-8 -ml-14'
                         style={{ gridTemplateColumns: "1fr 1fr 1fr" }}
                       >
                         {this.state.skeletonCards.map((card) => (
-                          <div className="w-96 p-4 border border-gray-700 rounded-lg shadow-2xl">
-                            <div className="flex space-x-3">
-                              <div className="flex-none w-12 h-12 bg-gray-700 rounded-full animate-pulse" />
-                              <div className="w-full space-y-2">
-                                <div className="w-3/4 h-4 bg-gray-700 rounded animate-pulse" />
-                                <div className="w-full h-4 bg-gray-700 rounded animate-pulse" />
-                                <div className="w-5/6 h-4 bg-gray-700 rounded animate-pulse" />
-                                <div className="w-5/6 h-4 bg-gray-700 rounded animate-pulse" />
-                                <div className="w-5/6 h-4 bg-gray-700 rounded animate-pulse" />
+                          <div className='w-96 p-4 border border-gray-700 rounded-lg shadow-2xl'>
+                            <div className='flex space-x-3'>
+                              <div className='flex-none w-12 h-12 bg-gray-700 rounded-full animate-pulse' />
+                              <div className='w-full space-y-2'>
+                                <div className='w-3/4 h-4 bg-gray-700 rounded animate-pulse' />
+                                <div className='w-full h-4 bg-gray-700 rounded animate-pulse' />
+                                <div className='w-5/6 h-4 bg-gray-700 rounded animate-pulse' />
+                                <div className='w-5/6 h-4 bg-gray-700 rounded animate-pulse' />
+                                <div className='w-5/6 h-4 bg-gray-700 rounded animate-pulse' />
                               </div>
                             </div>
                           </div>
@@ -175,7 +173,7 @@ export default class Projects extends Component<ProjectsProps, ProjectsState> {
                       this.state.Projects.map((project) => (
                         <li
                           id={project.id.toString()}
-                          className="animate__animated animate__fadeIn animate_delay-4s"
+                          className='animate__animated animate__fadeIn animate_delay-4s'
                         >
                           <ProjectCard
                             name={project.name}
@@ -197,8 +195,8 @@ export default class Projects extends Component<ProjectsProps, ProjectsState> {
               </div>
             </div>
           </section>
+          <Footer />
         </VechaiProvider>
-        <Footer />
       </div>
     );
   }

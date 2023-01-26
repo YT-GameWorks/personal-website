@@ -4,7 +4,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["dummyimage.com"],
+    domains: ["dummyimage.com", "https://devicon.dev/"],
   },
   env: {
     USER_ID: process.env.USER_ID,
